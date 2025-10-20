@@ -10,7 +10,7 @@ import geslord from './assets/geslord.webp';
 import hackinghr from './assets/hackinghr.webp';
 import kitcase from './assets/kitcase.webp';
 import universidad from './assets/universidad.webp';
-import cesarMember from './assets/cesar-member.jpg';
+import cesarMember from './assets/cesar-member2.webp';
 
 function App() {
   // const [currentTestimonial, setCurrentTestimonial] = useState(2);
@@ -36,7 +36,7 @@ function App() {
     },
     {
       title: 'Geslord',
-      description: 'SaaS platform with integrated payments, dashboards, and user management features. Took initiative to advance new projects independently, implementing features from UI to backend integration and ensuring high-quality delivery.',
+      description: 'Built a complete financial and accounting management product from the ground up, tailored for the Venezuelan market. Led the entire development lifecycle — from concept and UI design to backend integration and deployment — ensuring reliability and compliance with local financial requirements.',
       tags: ['Fullstack', 'SaaS', 'Node.js', 'Vue3', 'Integrations', 'Astro', 'Digital Ocean', 'Docker'],
       date: '2023 - In Progress',
       status: 'IN PROGRESS',
@@ -54,7 +54,7 @@ function App() {
     {
       title: 'University Projects',
       description: 'A collection of innovative academic projects ranging from an MVP platform to connect students with professors, to a Hackathon-winning MVP, robotics and computer vision systems, sensor-based motion detection arms, and interactive interface experiments — all focused on merging technology, creativity, and practical problem-solving.',
-      tags: ['Robotics', 'Computer Vision', 'AI', 'Hardware', 'Fullstack'],
+      tags: ['Robotics', 'Computer Vision', 'AI', 'Hardware', 'Fullstack', 'Python'],
       date: '2024',
       status: 'COMPLETED',
       image: universidad,
@@ -63,7 +63,7 @@ function App() {
     {
       title: 'KitCase / Social Media',
       description: 'Kitcase is a social network designed to facilitate the sharing and understanding of scientific documents. Users can upload and explore PDF articles through optimized viewers, discover relevant research, and engage in discussions focused on the findings. The goal is to enhance collective knowledge and make academic reading more accessible and collaborative.',
-      tags: ['Robotics', 'Computer Vision', 'AI', 'Hardware', 'Fullstack'],
+      tags: ['Fullstack', 'SaaS', 'Node.js', 'Vue3'],
       date: '2021',
       status: 'COMPLETED',
       image: kitcase
@@ -407,16 +407,6 @@ function App() {
                       <div className="h-1 bg-white/30" style={{width: '15px'}}></div>
                     </div>
 
-                    {/* Robot image for mobile/tablet */}
-                    <div className="pointer-events-none overflow-hidden select-none absolute top-6 -right-8 z-5 w-64 font-mono text-white max-md:scale-x-[-1] md:top-8 md:right-4 lg:hidden animate-float">
-                      <div className="relative">
-                        <div className="text-8xl">🤖</div>
-                        <div className="pointer-events-auto absolute top-[40.95%] left-[51.35%] flex aspect-[446/278] w-[36%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-[12%/18%]">
-                          <div className="max-md:scale-x-[-1] text-sm">Hey👋</div>
-                        </div>
-                      </div>
-                    </div>
-
                     {/* Content paragraphs */}
                     <div className="space-y-6 text-white/70 text-base md:text-lg leading-relaxed opacity-0 animate-fade-in animation-delay-300">
                       <div className="group relative border-l-2 border-white/20 pl-6 transition-all duration-300 hover:border-white">
@@ -483,7 +473,7 @@ function App() {
                         <div className="absolute -bottom-1 -right-1 h-8 w-8 border-b-2 border-r-2 border-white"></div>
 
                         <div className="text-center">
-                          <div className="bg-[#0a0a0a] mb-6 overflow-hidden border-0 p-2 relative group">
+                          <div className="bg-[#0a0a0a] mb-6 overflow-hidden border-0 p-0 relative group scale-110">
                             <div className="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                             <img src={cesarMember}></img>
                           </div>

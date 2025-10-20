@@ -91,15 +91,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="relative flex flex-col justify-center overflow-hidden p-8 md:p-12 lg:p-16">
           <div className="mb-6 flex flex-wrap items-center gap-3">
-            <time className="text-white/60 font-mono text-xs">{date}</time>
+            <time className="text-white/80 font-mono text-xs">{date}</time>
             <div className="bg-gray-800 h-4 w-px"></div>
             <div className="inline-flex items-center gap-1.5">
               <div className={`h-2 w-2 rounded-full animate-pulse ${status === 'COMPLETED' ? 'bg-green-500' : 'bg-blue-500'}`}></div>
-              <span className="text-white/60 font-mono text-xs uppercase">{status}</span>
+              <span className="text-white/80 font-mono text-xs uppercase">{status}</span>
             </div>
           </div>
 
-          <p className="text-white/60 mb-6 text-sm leading-relaxed md:text-base">
+          <p className="text-white/80 mb-6 text-sm leading-relaxed md:text-base">
             {description}
           </p>
 
@@ -107,7 +107,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="border border-white/40 bg-[#0a0a0a] font-mono text-xs px-3 py-1 transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+                className="border border-white/40 bg-[#0a0a0a] font-mono text-[16px] px-3 py-1 transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
               >
                 {tag}
               </span>

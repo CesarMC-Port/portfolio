@@ -60,7 +60,7 @@ export function SkillCard({ icon: Icon, title, skills }: SkillCardProps) {
               {skills.map((skill, index) => (
                 <span
                   key={index}
-                  className="border border-white/40 bg-[#0a0a0a] px-3 py-1 font-mono text-xs transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+                  className="border border-white/40 px-3 py-1 font-mono text-[16px] transition-all duration-300 border-white text-whte"
                 >
                   {skill}
                 </span>

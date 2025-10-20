@@ -70,7 +70,7 @@ export function StatCard({ value, label, index }: StatCardProps) {
         <div className="h-px w-8 bg-white/40"></div>
       </div>
 
-      <div className="font-mono text-xs text-gray-500">{label}</div>
+      <div className="font-mono text-[16px] text-white">{label}</div>
     </div>
   );
 }
