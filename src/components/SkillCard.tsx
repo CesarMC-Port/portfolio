@@ -45,7 +45,7 @@ export function SkillCard({ icon: Icon, title, skills }: SkillCardProps) {
         transition: 'transform 0.1s ease-out',
       }}
     >
-      <div className="relative h-full border-2 border-white bg-[#0a0a0a] p-8 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/20">
+      <div className="relative h-full border-2 border-white bg-[#25292e] p-8 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/20">
         <div className="absolute inset-0 border border-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ margin: '4px' }}></div>
 
         <div className="relative z-10 flex h-full flex-col">

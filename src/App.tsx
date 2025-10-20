@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { Github, ArrowRight, BarChart, Code, Cpu, Globe, Edit2, UserCheck } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
 import { AnimatedBackground } from './components/AnimatedBackground';
 import { StatCard } from './components/StatCard';
 import { AnimatedLogo } from './components/AnimatedLogo';
 import { SkillCard } from './components/SkillCard';
 import { ProjectCard } from './components/ProjectCard';
+import { AnimatedLoading } from './components/AnimatedLoading';
 import geslord from './assets/geslord.webp';
 import hackinghr from './assets/hackinghr.webp';
 import kitcase from './assets/kitcase.webp';
 import universidad from './assets/universidad.webp';
 import cesarMember from './assets/cesar-member2.webp';
+import plane from './assets/planes2.png'
 
 function App() {
   // const [currentTestimonial, setCurrentTestimonial] = useState(2);
   const [loading, setLoading] = useState(true)
+  const [loading2, setLoading2] = useState(true)
 
   const stats = [
     { value: '6+', label: 'YEARS OF EXPERIENCE' },
@@ -174,15 +176,10 @@ function App() {
   //   },
   // ];
 
-  const splineEnv = () => {
+  const splineBotLoad = () => {
     try{
       return <div className='hidden md:flex' style={{ position: "absolute", left:'0px',top:'0px', width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
-        {loading && <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", zIndex: 20, transition: "opacity 400ms ease, visibility 400ms", height:'50%' }} >
-          <div style={{ textAlign: "center", fontFamily: "system-ui, sans-serif", transform:'scale(2)' }}>
-            <div style={{ width: 56, height: 56, borderRadius: "50%", border: "5px solid rgba(255,255,255,0.9)", borderTopColor: "transparent", animation: "spin 0.9s linear infinite", margin: "0 auto 12px" }} />
-            <div style={{ fontSize: 16 }}>Cargando escena...</div>
-          </div>
-        </div>}
+        {loading && <AnimatedLoading/>}
         <iframe 
           src="https://my.spline.design/nexbotrobotcharacterconcept-CgMO3IqoiMjBi7PyKazwWDaA/" 
           loading="lazy"
@@ -197,13 +194,31 @@ function App() {
     }
   }
 
+  const splineStackLoad = () => {
+    try{
+      return <div className='hidden md:flex' style={{ position:'absolute',left:'0px',top:'0px',width:'100%',height:'100%',zIndex:'5', background:'transparent' }}>
+        {loading2 && <AnimatedLoading/>}
+        <iframe 
+          src="https://my.spline.design/stackscopy-OrUPgpPXvTCNAFZzT4iE7fbL/" 
+          loading="lazy"
+          style={{position:'absolute',left:'0px',top:'70px',width:'100%',height:'100%',zIndex:'5'}} 
+          onLoad={() => setLoading2(false)}
+        >
+        </iframe>
+      </div>
+    }catch(er){
+      console.log(er)
+      return <div style={{position:'absolute',left:'0px',top:'0px',width:'100%',height:'calc(100vh - 60px)', background:'white'}} ></div>
+    }
+  }
+
   return (
-    <div className="no-scrollbar portfolio-container relative size-full snap-y snap-mandatory overflow-y-scroll">
-      <main className="before:border-border after:border-border relative z-10 min-h-screen snap-start before:absolute before:top-0 before:left-0 before:h-full before:w-12 before:border-r before:bg-[linear-gradient(-135deg,_#1a1a1a_25%,_transparent_25%,_transparent_50%,_#1a1a1a_50%,_#1a1a1a_75%,_transparent_75%,_transparent)] before:bg-[length:5px_5px] after:absolute after:top-0 after:right-0 after:h-full after:w-12 after:border-l after:bg-[linear-gradient(135deg,_#1a1a1a_25%,_transparent_25%,_transparent_50%,_#1a1a1a_50%,_#1a1a1a_75%,_transparent_75%,_transparent)] after:bg-[length:5px_5px] max-md:before:hidden max-md:after:hidden md:px-12 bg-[#0a0a0a] text-white">
+    <div className="no-scrollbar portfolio-container relative size-full snap-y snap-mandatory overflow-y-hidden">
+      <main className="before:border-border after:border-border relative z-10 min-h-screen snap-start before:absolute before:top-0 before:left-0 before:h-full before:w-12 before:border-r before:bg-[linear-gradient(-135deg,_#1a1a1a_25%,_transparent_25%,_transparent_50%,_#1a1a1a_50%,_#1a1a1a_75%,_transparent_75%,_transparent)] before:bg-[length:5px_5px] after:absolute after:top-0 after:right-0 after:h-full after:w-12 after:border-l after:bg-[linear-gradient(135deg,_#1a1a1a_25%,_transparent_25%,_transparent_50%,_#1a1a1a_50%,_#1a1a1a_75%,_transparent_75%,_transparent)] after:bg-[length:5px_5px] max-md:before:hidden max-md:after:hidden md:px-12 bg-[#0d1117] text-white">
         {/* Header */}
-        <nav className="w-full border-b border-gray-800 px-4 py-2.5 md:px-8 backdrop-blur-sm bg-[#0a0a0a]/90 sticky top-0 z-50" id="home">
+        <nav className="w-full border-b border-gray-800 px-4 py-2.5 md:px-8 backdrop-blur-sm bg-[#0d1117]/90 sticky top-0 z-50" id="home">
           <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 opacity-0 animate-slide-in-left">
+          <div className="items-center gap-2 opacity-0 animate-slide-in-left hidden md:flex">
             <AnimatedLogo
               text="<César/>"
               className="border-2 border-white px-4 py-2 font-mono text-sm hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
@@ -241,15 +256,18 @@ function App() {
 
             {/* Hero Section */}
             <section 
-              className="relative z-10 px-4 pb-6 md:px-8 md:pb-14 lg:px-20 py-12 md:py-20 overflow-hidden" 
-              style={{height:'calc(100vh - 60px)', background:'radial-gradient( circle at center, #d5d5d5 0%, rgb(101 101 101) 20%, #1d1d1d 55%, #000 100% )'}}
+              className="relative z-10 px-4 pb-6 md:px-8 md:pb-14 lg:px-20 py-12 md:py-20 overflow-hidden min-h-[860px] md:min-h-[820px]" 
+              style={{height:'calc(100vh - 60px)', background: 'transparent'}}
             >
               <AnimatedBackground />
-              {splineEnv()}
-
+              {/* <img 
+                style={{height:'100%',position:'absolute',left:'0px',top:'0px',width:'100%', opacity:'0.2'}} 
+                src={plane} 
+              /> */}
+              {splineBotLoad()}
               {/* Stats Section */}
-              <div className="absolute z-10 container mx-auto px-6 py-20 pb-6 bottom-0 left-0">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+              <div className="hidden md:block absolute z-10 container mx-auto md:pt-6 px-6 md:py-20 bottom-[40px] md:bottom-0 left-0">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                   {stats.map((stat, index) => (
                     <StatCard
                       key={index}
@@ -260,11 +278,103 @@ function App() {
                   ))}
                 </div>
               </div>
+
+              <div className="relative h-full flex items-center justify-center border-l border-gray-800 md:w-1/2 sm:hidden flex-1">
+                  {splineStackLoad()}
+                  <div className="absolute inset-0 size-full">
+                    <div className="before:bg-gray-800 after:bg-gray-800 relative h-full w-full before:absolute before:top-1/2 before:left-0 before:h-0.5 before:w-full after:absolute after:top-0 after:left-1/2 after:h-full after:w-0.5"></div>
+                  </div>
+                  <div className="relative py-4" style={{transform: 'rotate(-2deg) translateY(-30px)'}}>
+                    <div className="sticky top-8 h-auto w-80">
+                      <div className="absolute -inset-2 bg-white/5 rotate-3 blur-sm"></div>
+                      <div className="absolute -inset-1 bg-white/10 rotate-1"></div>
+                      <div className="bg-[#0d1117] relative border-2 border-white p-8 shadow-2xl shadow-white/10">
+                        <div className="absolute -top-1 -left-1 h-8 w-8 border-t-2 border-l-2 border-white"></div>
+                        <div className="absolute -top-1 -right-1 h-8 w-8 border-t-2 border-r-2 border-white"></div>
+                        <div className="absolute -bottom-1 -left-1 h-8 w-8 border-b-2 border-l-2 border-white"></div>
+                        <div className="absolute -bottom-1 -right-1 h-8 w-8 border-b-2 border-r-2 border-white"></div>
+
+                        <div className="text-center">
+                          <div className="bg-[#0d1117] mb-6 overflow-hidden border-0 p-0 relative group scale-110">
+                            <div className="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                            <img src={cesarMember}></img>
+                          </div>
+
+                          <h3 className="text-3xl font-bold mb-2">Cesar Mora</h3>
+                          <p className="text-white/60 mb-1 font-mono text-sm uppercase tracking-wider">Full-Stack Developer</p>
+
+                          <div className="flex items-center justify-center gap-2 my-4">
+                            <div className="h-px flex-1 bg-white/20"></div>
+                            <div className="h-2 w-2 rotate-45 border border-white/40"></div>
+                            <div className="h-px flex-1 bg-white/20"></div>
+                          </div>
+
+                          <div className="flex flex-wrap justify-center gap-2 mb-6">
+                            <span className="inline-flex items-center justify-center border px-3 py-1.5 text-xs font-medium font-mono border-green-500/40 bg-green-500/10">
+                              <div className="mr-1.5 h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+                              AVAILABLE
+                            </span>
+                            <span className="inline-flex items-center justify-center border px-3 py-1.5 text-xs font-medium font-mono border-white/20 bg-white/5">
+                              6+ YEARS
+                            </span>
+                             <span className="inline-flex items-center justify-center border px-3 py-1.5 text-xs font-medium font-mono border-white/20 bg-white/5">
+                              40+ PROJECTS DELIVERED
+                            </span>
+                             <span className="inline-flex items-center justify-center border px-3 py-1.5 text-xs font-medium font-mono border-white/20 bg-white/5">
+                              1000+ CONTRIBUTIONS
+                            </span>
+                            <span className="inline-flex items-center justify-center border px-3 py-1.5 text-xs font-medium font-mono border-white/20 bg-white/5">
+                              40+ TECH SKILLS & LEARNING
+                            </span>
+                          </div>
+
+                          <div className="space-y-3 text-left">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-white/60 font-mono text-xs">FRONTEND</span>
+                              <div className="flex gap-1">
+                                {[...Array(5)].map((_, i) => (
+                                  <div key={i} className="h-1.5 w-6 border border-white/40 bg-white"></div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-white/60 font-mono text-xs">DESIGN</span>
+                              <div className="flex gap-1">
+                                {[...Array(5)].map((_, i) => (
+                                  <div key={i} className="h-1.5 w-6 border border-white/40 bg-white"></div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-white/60 font-mono text-xs">BACKEND</span>
+                              <div className="flex gap-1">
+                                {[...Array(4)].map((_, i) => (
+                                  <div key={i} className="h-1.5 w-6 border border-white/40 bg-white"></div>
+                                ))}
+                                <div className="h-1.5 w-6 border border-white/40"></div>
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-white/60 font-mono text-xs">DEVOPS</span>
+                              <div className="flex gap-1">
+                                {[...Array(3)].map((_, i) => (
+                                  <div key={i} className="h-1.5 w-6 border border-white/40 bg-white"></div>
+                                ))}
+                                <div className="h-1.5 w-6 border border-white/40"></div>
+                                <div className="h-1.5 w-6 border border-white/40"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </section>
 
             {/* Skills Section with 3D Cards */}
             <section className="relative w-full border-b border-gray-800">
-              <div className="bg-[#0a0a0a] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
+              <div className="bg-[#0d1117] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
                 TECH STACK
               </div>
 
@@ -375,7 +485,7 @@ function App() {
 
             {/* Projects Section */}
             <section id="projects" className="relative w-full border-b border-gray-800">
-              <div className="bg-[#0a0a0a] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
+              <div className="bg-[#0d1117] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
                 PROJECTS
               </div>
               <div className="space-y-6 p-6">
@@ -392,14 +502,14 @@ function App() {
 
             {/* About Section */}
             <section id="about" className="relative w-full border-b border-gray-800 overflow-hidden">
-              <div className="bg-[#0a0a0a] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
+              <div className="bg-[#0d1117] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
                 ABOUT
               </div>
-              <div className="flex items-center lg:h-[97.5vh]">
+              <div className="flex items-center flex-col md:flex-row lg:h-[97.5vh]">
                 {/* Left side - Content */}
-                <div className="relative flex-[0.6] px-4 py-20 md:px-12 lg:py-12">
+                <div className="relative flex-1 md:flex-[0.6] px-4 py-20 md:px-12 lg:py-12">
                   <div className="max-w-3xl">
-                    <h2 className="text-3xl font-bold md:text-5xl lg:text-6xl opacity-0 animate-fade-in-up mb-6">
+                    <h2 style={{lineHeight: '1.2'}} className="text-3xl font-bold md:text-5xl lg:text-6xl opacity-0 animate-fade-in-up mb-6">
                       Bringing ideas to life
                     </h2>
 
@@ -412,28 +522,28 @@ function App() {
                     {/* Content paragraphs */}
                     <div className="space-y-6 text-white/70 text-base md:text-lg leading-relaxed opacity-0 animate-fade-in animation-delay-300">
                       <div className="group relative border-l-2 border-white/20 pl-6 transition-all duration-300 hover:border-white">
-                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0a0a0a] transition-all duration-300 group-hover:border-white"></div>
+                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0d1117] transition-all duration-300 group-hover:border-white"></div>
                         <p>
                           I began my career in <span className="text-white font-medium">mechanical design</span>, which gave me a strong foundation in building products. Later, I explored <span className="text-white font-medium">UI/UX design</span> and interface creation, which led me to transition into <span className="text-white font-medium">full-stack development</span>.
                         </p>
                       </div>
 
                       <div className="group relative border-l-2 border-white/20 pl-6 transition-all duration-300 hover:border-white">
-                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0a0a0a] transition-all duration-300 group-hover:border-white"></div>
+                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0d1117] transition-all duration-300 group-hover:border-white"></div>
                         <p>
                           I have often worked as the <span className="text-white font-medium">sole developer</span> in small teams, managing projects <span className="text-white font-medium">end-to-end</span>: interface design, feature integration, testing, deployment, and maintenance.
                         </p>
                       </div>
 
                       <div className="group relative border-l-2 border-white/20 pl-6 transition-all duration-300 hover:border-white">
-                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0a0a0a] transition-all duration-300 group-hover:border-white"></div>
+                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0d1117] transition-all duration-300 group-hover:border-white"></div>
                         <p>
                           I love learning constantly, and as a hobby, I explore <span className="text-white font-medium">hardware, robotics, and computer vision</span>.
                         </p>
                       </div>
 
                       <div className="group relative border-l-2 border-white/20 pl-6 transition-all duration-300 hover:border-white">
-                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0a0a0a] transition-all duration-300 group-hover:border-white"></div>
+                        <div className="absolute -left-1.5 top-2 h-3 w-3 rotate-45 border-2 border-white/40 bg-[#0d1117] transition-all duration-300 group-hover:border-white"></div>
                         <p>
                           My focus is on building <span className="text-white font-medium">scalable, efficient, and high-impact products</span>, always seeking innovative solutions.
                         </p>
@@ -456,17 +566,8 @@ function App() {
                 </div>
 
                 {/* Right side - Profile Card */}
-                <div className="relative hidden h-full items-center justify-center border-l border-gray-800 md:w-1/2 lg:flex flex-1">
-                  <Spline
-                    scene="https://prod.spline.design/nZnebrOuVZIkRVi3/scene.splinecode" 
-                    style={{position:'absolute',left:'0px',top:'70px',width:'100%',height:'100%',zIndex:'5'}} 
-                  />
-                  {/* <iframe 
-                    src="https://my.spline.design/particleaibrain-62rB9qMSyyWCAow9A3vZye85/" 
-                    loading="lazy"
-                    style={{position:'absolute',left:'0px',top:'70px',width:'100%',height:'100%',zIndex:'5'}} 
-                  >
-                  </iframe> */}
+                <div className="relative h-full hidden items-center justify-center border-l border-gray-800 md:w-1/2 lg:flex flex-1">
+                  {splineStackLoad()}
                   <div className="absolute inset-0 size-full">
                     <div className="before:bg-gray-800 after:bg-gray-800 relative h-full w-full before:absolute before:top-1/2 before:left-0 before:h-0.5 before:w-full after:absolute after:top-0 after:left-1/2 after:h-full after:w-0.5"></div>
                   </div>
@@ -474,14 +575,14 @@ function App() {
                     <div className="sticky top-8 h-auto w-80">
                       <div className="absolute -inset-2 bg-white/5 rotate-3 blur-sm"></div>
                       <div className="absolute -inset-1 bg-white/10 rotate-1"></div>
-                      <div className="bg-[#0a0a0a] relative border-2 border-white p-8 shadow-2xl shadow-white/10">
+                      <div className="bg-[#0d1117] relative border-2 border-white p-8 shadow-2xl shadow-white/10">
                         <div className="absolute -top-1 -left-1 h-8 w-8 border-t-2 border-l-2 border-white"></div>
                         <div className="absolute -top-1 -right-1 h-8 w-8 border-t-2 border-r-2 border-white"></div>
                         <div className="absolute -bottom-1 -left-1 h-8 w-8 border-b-2 border-l-2 border-white"></div>
                         <div className="absolute -bottom-1 -right-1 h-8 w-8 border-b-2 border-r-2 border-white"></div>
 
                         <div className="text-center">
-                          <div className="bg-[#0a0a0a] mb-6 overflow-hidden border-0 p-0 relative group scale-110">
+                          <div className="bg-[#0d1117] mb-6 overflow-hidden border-0 p-0 relative group scale-110">
                             <div className="absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                             <img src={cesarMember}></img>
                           </div>
@@ -552,7 +653,7 @@ function App() {
 
             {/* Testimonials Section */}
             {/* <section id="testimonials" className="relative w-full border-b border-gray-800 h-[600px] overflow-hidden">
-              <div className="bg-[#0a0a0a] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
+              <div className="bg-[#0d1117] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
                 TESTIMONIALS
               </div>
 
@@ -597,7 +698,7 @@ function App() {
                       src={testimonial.image}
                       alt={testimonial.author}
                       className="bg-gray-800 mb-4 h-14 w-12 object-cover object-top"
-                      style={{boxShadow: '3px 3px 0px #0a0a0a'}}
+                      style={{boxShadow: '3px 3px 0px #0d1117'}}
                     />
 
                     <h3 className={`text-base font-medium sm:text-xl ${isCenter ? 'text-black' : 'text-white'}`}>
@@ -616,14 +717,14 @@ function App() {
               <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-20">
                 <button
                   onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                  className="flex h-14 w-14 items-center justify-center text-2xl transition-colors bg-[#0a0a0a] border-gray-800 hover:bg-white hover:text-black border-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="flex h-14 w-14 items-center justify-center text-2xl transition-colors bg-[#0d1117] border-gray-800 hover:bg-white hover:text-black border-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft />
                 </button>
                 <button
                   onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
-                  className="flex h-14 w-14 items-center justify-center text-2xl transition-colors bg-[#0a0a0a] border-gray-800 hover:bg-white hover:text-black border-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="flex h-14 w-14 items-center justify-center text-2xl transition-colors bg-[#0d1117] border-gray-800 hover:bg-white hover:text-black border-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight />

@@ -39,14 +39,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="group relative overflow-hidden border-2 border-white bg-[#0a0a0a] transition-all duration-500 hover:shadow-lg hover:shadow-white/20"
+      className="group relative overflow-hidden border-2 border-white bg-[#25292e] transition-all duration-500 hover:shadow-lg hover:shadow-white/20"
       style={{
         animationDelay: `${index * 150}ms`,
       }}
     >
       {isHovering && (
         <div
-          className="pointer-events-none absolute z-10 h-32 w-32 rounded-full bg-white/5 blur-2xl transition-opacity duration-300"
+          className="pointer-events-none absolute z-10 h-32 w-32 rounded-full bg-white/15 blur-2xl transition-opacity duration-300"
           style={{
             left: mousePosition.x - 64,
             top: mousePosition.y - 64,
@@ -75,7 +75,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <div className="border-white/20 absolute -top-2 -right-2 h-8 w-8 border-t-2 border-r-2 transition-all duration-300 group-hover:-top-3 group-hover:-right-3"></div>
                 <div className="border-white/20 absolute -bottom-2 -left-2 h-8 w-8 border-b-2 border-l-2 transition-all duration-300 group-hover:-bottom-3 group-hover:-left-3"></div>
                 <div className="border-white/20 absolute -right-2 -bottom-2 h-8 w-8 border-r-2 border-b-2 transition-all duration-300 group-hover:-right-3 group-hover:-bottom-3"></div>
-                <div className="bg-[#0a0a0a] relative overflow-hidden border-2 border-white">
+                <div className="bg-[#25292e] relative overflow-hidden border-2 border-white">
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={image}
@@ -107,7 +107,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="border border-white/40 bg-[#0a0a0a] font-mono text-[16px] px-3 py-1 transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+                className="border border-white/40 bg-[#25292e] font-mono text-[16px] px-3 py-1 transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
               >
                 {tag}
               </span>
@@ -118,7 +118,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {url && <a
               href={url}
               target='_blank'
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-300 bg-[#0a0a0a] hover:bg-gray-900 hover:scale-105 h-10 rounded-md px-6 border-2 border-white/20 font-medium group/btn"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-300 bg-[#25292e] hover:bg-gray-900 hover:scale-105 h-10 rounded-md px-6 border-2 border-white/20 font-medium group/btn"
             >
               <ExternalLink className="mr-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-1" />
               Website {url2 && '1'}
@@ -127,7 +127,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {url2 && <a
               href={url2}
               target='_blank'
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-300 bg-[#0a0a0a] hover:bg-gray-900 hover:scale-105 h-10 rounded-md px-6 border-2 border-white/20 font-medium group/btn"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-300 bg-[#25292e] hover:bg-gray-900 hover:scale-105 h-10 rounded-md px-6 border-2 border-white/20 font-medium group/btn"
             >
               <ExternalLink className="mr-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-1" />
               Website 2

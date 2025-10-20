@@ -13,7 +13,7 @@ export function StatCard({ value, label, index }: StatCardProps) {
 
   return (
     <div
-      className="relative border-2 border-white bg-[#0a0a0a] p-4 text-center transition-all duration-300 animate-pulse-scale"
+      className="relative border-2 border-white bg-[#25292e] p-4 text-center transition-all duration-300 animate-pulse-scale"
       style={{ animationDelay: delay }}
     >
       {/* Esquinas animadas: usamos variables CSS --dx y --dy para controlar la dirección */}
