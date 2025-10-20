@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { Github, ArrowRight, BarChart, Code, Cpu, Globe, Edit2, UserCheck } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 import { AnimatedBackground } from './components/AnimatedBackground';
@@ -14,6 +14,7 @@ import cesarMember from './assets/cesar-member.jpg';
 
 function App() {
   // const [currentTestimonial, setCurrentTestimonial] = useState(2);
+  const [loading, setLoading] = useState(true)
 
   const stats = [
     { value: '6+', label: 'YEARS OF EXPERIENCE' },
@@ -175,10 +176,19 @@ function App() {
 
   const splineEnv = () => {
     try{
-      return <Spline 
-        scene="https://prod.spline.design/F-4Fk3mEduOC-3us/scene.splinecode" 
-        style={{position:'absolute',left:'0px',top:'0px',width:'100%',height:'calc(100vh - 60px)',zIndex:'5'}} 
-      />
+      return <div style={{ position: "relative", width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
+        {loading && <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", zIndex: 20, transition: "opacity 400ms ease, visibility 400ms", height:'50%' }} >
+          <div style={{ textAlign: "center", fontFamily: "system-ui, sans-serif", transform:'scale(2)' }}>
+            <div style={{ width: 56, height: 56, borderRadius: "50%", border: "5px solid rgba(255,255,255,0.9)", borderTopColor: "transparent", animation: "spin 0.9s linear infinite", margin: "0 auto 12px" }} />
+            <div style={{ fontSize: 16 }}>Cargando escena...</div>
+          </div>
+        </div>}
+        <Spline 
+          scene="https://prod.spline.design/F-4Fk3mEduOC-3us/scene.splinecode" 
+          style={{position:'absolute',left:'0px',top:'0px',width:'100%',height:'calc(100vh - 60px)',zIndex:'5'}} 
+          onLoad={() => setLoading(false)}
+        />
+      </div>
     }catch(er){
       console.log(er)
       return <div style={{position:'absolute',left:'0px',top:'0px',width:'100%',height:'calc(100vh - 60px)', background:'white'}} ></div>
