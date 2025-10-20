@@ -176,7 +176,7 @@ function App() {
 
   const splineEnv = () => {
     try{
-      return <div style={{ position: "relative", width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
+      return <div style={{ position: "absolute", left:'0px',top:'0px', width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
         {loading && <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", zIndex: 20, transition: "opacity 400ms ease, visibility 400ms", height:'50%' }} >
           <div style={{ textAlign: "center", fontFamily: "system-ui, sans-serif", transform:'scale(2)' }}>
             <div style={{ width: 56, height: 56, borderRadius: "50%", border: "5px solid rgba(255,255,255,0.9)", borderTopColor: "transparent", animation: "spin 0.9s linear infinite", margin: "0 auto 12px" }} />
@@ -239,7 +239,7 @@ function App() {
 
             {/* Hero Section */}
             <section 
-              className="relative z-10 px-4 pb-6 md:px-8 md:pb-14 lg:px-20 py-12 md:py-20" 
+              className="relative z-10 px-4 pb-6 md:px-8 md:pb-14 lg:px-20 py-12 md:py-20 overflow-hidden" 
               style={{height:'calc(100vh - 60px)', background:'radial-gradient( circle at center, #d5d5d5 0%, rgb(101 101 101) 20%, #1d1d1d 55%, #000 100% )'}}
             >
               <AnimatedBackground />
