@@ -176,18 +176,20 @@ function App() {
 
   const splineEnv = () => {
     try{
-      return <div style={{ position: "absolute", left:'0px',top:'0px', width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
+      return <div className='hidden md:flex' style={{ position: "absolute", left:'0px',top:'0px', width: "100%", height: "calc(100vh - 60px)", background:'transparent' }}>
         {loading && <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", zIndex: 20, transition: "opacity 400ms ease, visibility 400ms", height:'50%' }} >
           <div style={{ textAlign: "center", fontFamily: "system-ui, sans-serif", transform:'scale(2)' }}>
             <div style={{ width: 56, height: 56, borderRadius: "50%", border: "5px solid rgba(255,255,255,0.9)", borderTopColor: "transparent", animation: "spin 0.9s linear infinite", margin: "0 auto 12px" }} />
             <div style={{ fontSize: 16 }}>Cargando escena...</div>
           </div>
         </div>}
-        <Spline 
-          scene="https://prod.spline.design/F-4Fk3mEduOC-3us/scene.splinecode" 
+        <iframe 
+          src="https://my.spline.design/nexbotrobotcharacterconcept-CgMO3IqoiMjBi7PyKazwWDaA/" 
+          loading="lazy"
           style={{position:'absolute',left:'0px',top:'0px',width:'100%',height:'calc(100vh - 60px)',zIndex:'5'}} 
           onLoad={() => setLoading(false)}
-        />
+        >
+        </iframe>
       </div>
     }catch(er){
       console.log(er)
@@ -459,6 +461,12 @@ function App() {
                     scene="https://prod.spline.design/nZnebrOuVZIkRVi3/scene.splinecode" 
                     style={{position:'absolute',left:'0px',top:'70px',width:'100%',height:'100%',zIndex:'5'}} 
                   />
+                  {/* <iframe 
+                    src="https://my.spline.design/particleaibrain-62rB9qMSyyWCAow9A3vZye85/" 
+                    loading="lazy"
+                    style={{position:'absolute',left:'0px',top:'70px',width:'100%',height:'100%',zIndex:'5'}} 
+                  >
+                  </iframe> */}
                   <div className="absolute inset-0 size-full">
                     <div className="before:bg-gray-800 after:bg-gray-800 relative h-full w-full before:absolute before:top-1/2 before:left-0 before:h-0.5 before:w-full after:absolute after:top-0 after:left-1/2 after:h-full after:w-0.5"></div>
                   </div>
