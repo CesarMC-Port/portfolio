@@ -1,0 +1,16 @@
+---
+import ProjectCard from '../components/project/ProjectCard.vue';
+import { projects } from '../const';
+---
+
+<section id="projects" class="relative w-full border-b border-gray-800">
+  <div class="bg-[#0d1117] absolute top-0 left-0 z-20 rounded-br-md border-r border-b border-gray-800 px-4 py-2 font-mono text-xs tracking-wider uppercase">
+    PROJECTS
+  </div>
+
+  <div class="space-y-6 p-6">
+    {projects.map((project, index) => (
+      <ProjectCard project={project} index={index} client:load />
+    ))}
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none opacity-30 h-full">
+  {Array.from({ length: 100 }).map((_, i) => (
+    <div
+      class="particle absolute w-1 h-1 bg-white rounded-full"
+      style={`left:${Math.random() * 100}%; top:${Math.random() * 100}%;`}
+    ></div>
+  ))}
+</div>
+
+<script>
+  import { initParticles } from "../../scripts";
+  const container = document.getElementById("particles");
+  if (container) initParticles(container);
+</script>

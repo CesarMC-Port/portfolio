@@ -1,0 +1,71 @@
+---
+import AnimatedLogo from "./AnimatedLogo.astro";
+import { Github } from "@lucide/astro";
+---
+
+<section class="bg-transparent border-b border-black/10">
+    {/* Header */}
+    <nav class="w-full border-b border-gray-800 px-4 py-2.5 md:px-8 backdrop-blur-sm bg-[#0d1117]/90 sticky top-0 z-50" id="home">
+      <div class="flex items-center justify-between gap-4">
+      <div class="items-center gap-2 opacity-0 animate-slide-in-left hidden md:flex">
+        <AnimatedLogo
+          text="<César/>"
+          class="border-2 border-white px-4 py-2 font-mono text-sm hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+        />
+      </div>
+
+      <div class="flex items-center gap-8 opacity-0 animate-fade-in animation-delay-200">
+        <a href="#home" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
+          Home
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
+          About
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#projects" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
+          Projects
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 opacity-0 animate-slide-in-right animation-delay-300">
+        <a href="https://github.com/CesarMC-Port" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-gray-800 rounded transition-all duration-300 hover:scale-110 hover:rotate-12">
+          <Github size={20} />
+        </a>
+        <a href="https://www.linkedin.com/in/cesar-alejandro-mora-contreras-0118a51bb" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-gray-800 rounded transition-all duration-300 hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      </div>
+    </nav>
+</section>
+
+<script>
+  let open = false
+
+  const changeStateNav = () => {
+    let firstNav:any = document.getElementById("first-element-menu");
+		let secondNav:any = document.getElementById("second-element-menu");
+		let listNav:any = document.getElementById("nav-element-menu");
+
+    ((firstNav || {}).style || {}).display = !open ? 'none' : 'inline-flex';
+    ((secondNav || {}).style || {}).display = open ? 'none' : 'inline-flex';
+    ((listNav || {}).style || {}).display = open ? 'none' : 'flex'
+    open = !open;
+  }
+
+  const setEventSubmit = (num=0) => {
+		let buttonNav = document.getElementById("button-element-menu")
+		if(buttonNav){
+			buttonNav.addEventListener('click',changeStateNav);
+		}else{
+			num = num + 1;
+			if(num < 10){setTimeout(() => {
+				setEventSubmit(num)
+			}, 200);}
+		}
+	}
+    
+	setEventSubmit();
+</script>

@@ -1,0 +1,42 @@
+---
+const { icon:Icon, title, skills } = Astro.props;
+---
+
+<div
+  id="tilt-card"
+  class="group relative perspective-200 transition-transform duration-300 ease-linear"
+  style="transform:perspective(200px);"
+>
+  <div class="relative h-full border-2 border-white bg-[#25292e] p-8 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/20">
+    <div class="absolute inset-0 border border-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="margin:4px"></div>
+    <div class="relative z-10 flex h-full flex-col">
+      <div class="mb-6 inline-flex h-12 w-12 items-center justify-center border-2 border-white transition-all duration-300 group-hover:scale-110">
+        <Icon />
+      </div>
+      <h3 class="mb-6 font-mono text-sm font-bold uppercase tracking-wider">
+        {title}
+      </h3>
+      <div class="flex-1">
+        <div class="flex flex-wrap gap-2">
+          {skills.map((skill:string) => (
+            <span class="border border-white/40 px-3 py-1 font-mono text-[16px] transition-all duration-300">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="absolute -bottom-1 -right-1 h-8 w-8 border-b-2 border-r-2 border-white transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2"></div>
+    <div class="absolute -top-1 -left-1 h-8 w-8 border-t-2 border-l-2 border-white transition-all duration-300 group-hover:-top-2 group-hover:-left-2"></div>
+  </div>
+</div>
+
+<script>
+  import { initTiltCard } from "../../scripts";
+  const cards = document.querySelectorAll<HTMLElement>("#tilt-card");
+  if (cards) {
+    cards.forEach((card) => {
+      initTiltCard(card);
+    });
+  }
+</script>
