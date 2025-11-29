@@ -1,8 +1,8 @@
 import { Code, Cpu, Globe, BarChart, Edit2, UserCheck } from "@lucide/astro"; 
-const geslord = '../assets/geslord.webp';
-const hackinghr = '../assets/hackinghr.webp';
-const kitcase = '../assets/kitcase.webp';
-const universidad = '../assets/universidad.webp';
+const geslord = './assets/geslord.webp';
+const hackinghr = './assets/hackinghr.webp';
+const kitcase = './assets/kitcase.webp';
+const universidad = './assets/universidad.webp';
 
 export const projects = [
   {
