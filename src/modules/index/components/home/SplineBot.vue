@@ -1,20 +1,41 @@
 <template>
-  <div class="hidden md:flex spline-wrapper">
+  <div ref="wrapper" class="spline-wrapper">
     <div class="spline-loader" v-if="loading">
-        <div class="loaderSpline"></div>
-        <div class="message">Cargando escena...</div>
+      <div class="loaderSpline"></div>
+      <div class="message">Cargando escena...</div>
     </div>
+
     <iframe
-      src="https://my.spline.design/nexbotrobotcharacterconcept-CgMO3IqoiMjBi7PyKazwWDaA/"
-      loading="lazy"
+      v-if="shouldLoad"
+      :src="splineSrc"
       @load="loading = false"
     ></iframe>
   </div>
 </template>
 
 <script setup>
-    import { ref } from "vue";
-    const loading = ref(true);
+    import { ref, onMounted } from "vue";
+
+    const shouldLoad = ref(false);
+    const loading = ref(false);
+    const wrapper = ref(null);
+
+    const splineSrc = "https://my.spline.design/nexbotrobotcharacterconcept-CgMO3IqoiMjBi7PyKazwWDaA/";
+
+    onMounted(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+            if (entries[0].isIntersecting && !shouldLoad.value) {
+                shouldLoad.value = true;
+                loading.value = true;
+                observer.disconnect();
+            }
+            },
+            { threshold: 0.3 }
+        );
+
+        observer.observe(wrapper.value);
+    });
 </script>
 
 <style scoped>
