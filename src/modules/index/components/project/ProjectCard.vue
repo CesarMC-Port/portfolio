@@ -129,6 +129,15 @@
           >
             Website 2
           </a>
+
+          <a
+            v-if="props.project.url3"
+            :href="props.project.url3"
+            target="_blank"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-all duration-300 bg-[#25292e] hover:bg-gray-900 hover:scale-105 h-10 rounded-md px-6 border-2 border-white/20 font-medium"
+          >
+            Website 3
+          </a>
         </div>
 
         <!-- CORNER STYLE -->
