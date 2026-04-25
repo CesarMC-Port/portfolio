@@ -1,4 +1,4 @@
-import { Code, Cpu, Globe, BarChart, Edit2, UserCheck } from "@lucide/astro";
+import { Code, Cpu, Globe, ChartColumn, Pencil, UserCheck } from "@lucide/astro";
 const geslord = './assets/geslord.webp';
 const hackinghr = './assets/hackinghr.webp';
 const kitcase = './assets/kitcase.webp';
@@ -69,12 +69,12 @@ export const skills = [
     skills: ['Docker', 'Nginx', 'AWS', 'Vercel', 'Linux', 'Ubuntu', 'Git', 'CI/CD', 'PowerShell', 'VSCode', 'Digital Ocean', 'Cloudflare'],
   },
   {
-    code: BarChart,
+    code: ChartColumn,
     title: "AI, Data & Automation",
     skills: ['Python', 'YOLOv8', 'Data Processing', 'Automation Scripts', 'Claude Code', 'Antigravity', 'OpenCode'],
   },
   {
-    code: Edit2,
+    code: Pencil,
     title: "3D Design & CAD",
     skills: ['AutoCAD', 'SolidWorks', 'Inventor', 'Onshape', 'Blender'],
   },
