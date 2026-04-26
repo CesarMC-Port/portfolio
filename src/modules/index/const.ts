@@ -71,16 +71,16 @@ export const skills = [
   {
     code: ChartColumn,
     title: "AI, Data & Automation",
-    skills: ['Python', 'YOLOv8', 'Data Processing', 'Automation Scripts', 'Claude Code', 'Antigravity', 'OpenCode'],
+    skills: ['Claude Code', 'Antigravity', 'OpenCode'],
   },
-  {
-    code: Pencil,
-    title: "3D Design & CAD",
-    skills: ['AutoCAD', 'SolidWorks', 'Inventor', 'Onshape', 'Blender'],
-  },
-  {
-    code: UserCheck,
-    title: "Product & Methodologies",
-    skills: ['SCRUM / Kanban', 'System Design', 'Project Planning'],
-  },
+  // {
+  //   code: Pencil,
+  //   title: "3D Design & CAD",
+  //   skills: ['AutoCAD', 'SolidWorks', 'Inventor', 'Onshape', 'Blender'],
+  // },
+  // {
+  //   code: UserCheck,
+  //   title: "Product & Methodologies",
+  //   skills: ['SCRUM / Kanban', 'System Design', 'Project Planning'],
+  // },
 ];

@@ -8,6 +8,7 @@ export interface ProjectProps {
   image: string;
   url?: string;
   url2?: string;
+  url3?: string;
 }
 
 export interface ProjectCardProps {
