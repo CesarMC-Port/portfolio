@@ -3,14 +3,24 @@ const geslord = './assets/geslord.webp';
 const hackinghr = './assets/hackinghr.webp';
 const kitcase = './assets/kitcase.webp';
 const universidad = './assets/universidad.webp';
+const realxpertai = './assets/realxpertai.webp';
 
 export const projects = [
+  {
+    title: 'RealXpertAI',
+    description: 'Desarrollo de sistemas agénticos de voz e IA conversacional (Gemini Live, OpenAI Realtime) para la interacción en un SaaS inmobiliario. Implementación de scraper masivo automatizado para más de 700.000 propiedades con buscador semántico indexado y flujos asíncronos gestionados en Redis.',
+    tags: ['Fullstack', 'React', 'Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'WebSockets', 'AI Agents', 'Redis', 'Tailwind', 'Docker'],
+    date: '2026',
+    status: 'COMPLETED',
+    image: realxpertai,
+    url: 'https://realxpert.ai/',
+  },
   {
     title: 'Hacking HR',
     description: 'Delivered 20+ products within Hacking HR, including the full development of The AIx Summit. Projects ranged from dashboards and complex flows to Stripe integrations, chatbots, and admin panels, with a strong focus on UX, SEO, and scalability. Successfully reduced server costs by 50% and optimized internal workflows.',
     tags: ['Fullstack', 'React', 'Next.js', 'SaaS', 'Stripe', 'SEO', 'Optimization', 'AWS', 'Redis', 'Tailwind', 'Figma'],
-    date: '2022 - In Progress',
-    status: 'CURRENT POSITION',
+    date: '2022 - 2026',
+    status: 'COMPLETED',
     image: hackinghr,
     url: 'https://hackinghrlab.io/',
     url2: 'https://beta-app.hackinghrlab.io/',
@@ -20,8 +30,8 @@ export const projects = [
     title: 'Geslord',
     description: 'Built a complete financial and accounting management product from the ground up, tailored for the Venezuelan market. Led the entire development lifecycle — from concept and UI design to backend integration and deployment — ensuring reliability and compliance with local financial requirements.',
     tags: ['Fullstack', 'SaaS', 'Node.js', 'Vue3', 'Integrations', 'Astro', 'Digital Ocean', 'Docker'],
-    date: '2023 - In Progress',
-    status: 'IN PROGRESS',
+    date: '2023 - 2025',
+    status: 'COMPLETED',
     image: geslord,
     url: 'https://geslord.com/',
   },
@@ -56,22 +66,22 @@ export const skills = [
   {
     code: Code,
     title: "Frontend Development",
-    skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Nuxt', 'AngularJS', 'Vite', 'Tailwind CSS', 'Bootstrap', 'UX/UI Design', 'Figma'],
+    skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Nuxt', 'AngularJS', 'Vite', 'Tailwind CSS', 'Bootstrap', 'UX/UI Design', 'Figma', 'Zustand', 'Mapbox', 'Framer Motion'],
   },
   {
     code: Cpu,
     title: "Backend Development",
-    skills: ['Node.js', 'Express', 'FastAPI', 'Flask', 'NestJS', 'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB', 'Redis', 'Sequelize', 'GraphQL', 'Apollo', 'REST APIs'],
+    skills: ['Node.js', 'Express', 'FastAPI', 'Flask', 'NestJS', 'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB', 'Redis', 'Sequelize', 'GraphQL', 'Apollo', 'REST APIs', 'Socket.IO', 'TypeORM', 'BullMQ', 'Prisma'],
   },
   {
     code: Globe,
     title: "DevOps & Cloud",
-    skills: ['Docker', 'Nginx', 'AWS', 'Vercel', 'Linux', 'Ubuntu', 'Git', 'CI/CD', 'PowerShell', 'VSCode', 'Digital Ocean', 'Cloudflare'],
+    skills: ['Docker', 'Nginx', 'AWS', 'Vercel', 'Linux', 'Ubuntu', 'Git', 'CI/CD', 'PowerShell', 'VSCode', 'Digital Ocean', 'Cloudflare', 'Playwright'],
   },
   {
     code: ChartColumn,
     title: "AI, Data & Automation",
-    skills: ['Claude Code', 'Antigravity', 'OpenCode'],
+    skills: ['Claude Code', 'Antigravity', 'OpenCode', 'Firecrawl'],
   },
   // {
   //   code: Pencil,
