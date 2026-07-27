@@ -8,7 +8,7 @@ const realxpertai = './assets/realxpertai.webp';
 export const projects = [
   {
     title: 'RealXpertAI',
-    description: 'Desarrollo de sistemas agénticos de voz e IA conversacional (Gemini Live, OpenAI Realtime) para la interacción en un SaaS inmobiliario. Implementación de scraper masivo automatizado para más de 700.000 propiedades con buscador semántico indexado y flujos asíncronos gestionados en Redis.',
+    description: 'Development of voice-based agent systems and conversational AI (Gemini Live, OpenAI Realtime) for interaction within a real estate SaaS platform. Implementation of an automated bulk scraper for more than 700,000 properties, featuring an indexed semantic search engine and asynchronous workflows managed in Redis.',
     tags: ['Fullstack', 'React', 'Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'WebSockets', 'AI Agents', 'Redis', 'Tailwind', 'Docker'],
     date: '2026',
     status: 'COMPLETED',
