@@ -51,9 +51,11 @@
     left: 0px;
     background: url(../../assets/pictures/wave3.svg);
     background-size: 1000px 200px;
-    width: 100%;
+    background-repeat: repeat-x;
+    width: 200%;
     height: 200px;
-    transform: scale(1.4);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .div-footer .wave#wave1{
@@ -83,18 +85,18 @@
 
   @keyframes animateWave {
     0% {
-        background-position-x: 1000px;
+        transform: translate3d(0, 0, 0);
     }
     100% {
-        background-position-x: 0px;
+        transform: translate3d(-1000px, 0, 0);
     }
   }
   @keyframes animateWave_2 {
     0% {
-        background-position-x: 0px;
+        transform: translate3d(-1000px, 0, 0);
     }
     100% {
-        background-position-x: 1000px;
+        transform: translate3d(0, 0, 0);
     }
   }
 </style>

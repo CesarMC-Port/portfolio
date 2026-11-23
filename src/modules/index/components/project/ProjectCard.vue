@@ -9,10 +9,16 @@
   const mousePosition = ref({ x: 0, y: 0 });
   const isHovering = ref(false);
 
+  let rafId = 0;
+
   function handleMouseMove(e: MouseEvent) {
-    if (!cardRef.value) return;
+    if (!cardRef.value || rafId) return;
     const rect = cardRef.value.getBoundingClientRect();
-    mousePosition.value = calculateMousePosition(e, rect);
+    const pos = calculateMousePosition(e, rect);
+    rafId = requestAnimationFrame(() => {
+      mousePosition.value = pos;
+      rafId = 0;
+    });
   }
 </script>
 

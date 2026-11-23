@@ -35,7 +35,7 @@
           observer.disconnect();
         }
       },
-      { rootMargin: "300px", threshold: 0.1 }
+      { rootMargin: "100px", threshold: 0.1 }
     );
     observer.observe(wrapper.value);
   });
