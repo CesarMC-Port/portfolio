@@ -1,11 +1,13 @@
 @font-face{
   font-family: Rubik;
-  src:url(/assets/Rubik-Light.ttf)
+  src:url(/assets/Rubik-Light.ttf) format('truetype');
+  font-display: swap;
 }
 
 @font-face{
   font-family: Sans;
-  src:url(/assets/sanss___.ttf)
+  src:url(/assets/sanss___.ttf) format('truetype');
+  font-display: swap;
 }
 
 /* CSS */
@@ -528,3 +530,15 @@
   -webkit-text-fill-color: transparent;
   animation: text-shimmer 3s linear infinite;
 }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Bilingual EN/ES toggle */
+html[data-lang="en"] .lang-es { display: none !important; }
+html[data-lang="es"] .lang-en { display: none !important; }

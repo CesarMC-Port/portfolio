@@ -182,6 +182,9 @@ void main() {
     const rotationSpeed = 0.1;
     const autoCenterRepulsion = 0;
     const transparent = true;
+    const reduceMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // State
     const targetMousePos = { x: 0.5, y: 0.5 };
@@ -192,6 +195,7 @@ void main() {
     const renderer = new Renderer({
       alpha: transparent,
       premultipliedAlpha: false,
+      dpr: Math.min(window.devicePixelRatio || 1, 1.5),
     });
     const gl = renderer.gl;
 
@@ -256,9 +260,11 @@ void main() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    let animateId: number;
-    function update(t: number) {
-      animateId = requestAnimationFrame(update);
+    let animateId = 0;
+    let running = false;
+
+    function frame(t: number) {
+      animateId = requestAnimationFrame(frame);
 
       const lerp = 0.05;
       smoothMousePos.x += (targetMousePos.x - smoothMousePos.x) * lerp;
@@ -273,16 +279,43 @@ void main() {
       renderer.render({ scene: mesh });
     }
 
-    animateId = requestAnimationFrame(update);
+    function renderOnce() {
+      program.uniforms.uTime.value = 0;
+      renderer.render({ scene: mesh });
+    }
+
+    function start() {
+      if (running || reduceMotion) return;
+      running = true;
+      animateId = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(animateId);
+    }
+
+    function handleVisibility() {
+      if (document.hidden) stop();
+      else start();
+    }
+
+    if (reduceMotion) {
+      renderOnce();
+    } else {
+      start();
+      document.addEventListener("visibilitychange", handleVisibility);
+    }
 
     // Cleanup on page transitions
     document.addEventListener(
       "astro:before-swap",
       () => {
-        cancelAnimationFrame(animateId);
+        stop();
         window.removeEventListener("resize", resize);
         window.removeEventListener("mousemove", handleMouseMove);
         window.removeEventListener("mouseleave", handleMouseLeave);
+        document.removeEventListener("visibilitychange", handleVisibility);
         gl.getExtension("WEBGL_lose_context")?.loseContext();
       },
       { once: true },

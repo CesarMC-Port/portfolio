@@ -1,5 +1,5 @@
 ---
-const { value, label, index } = Astro.props
+const { value, label, labelEs, index } = Astro.props
 const delay = `${index * 200}ms`;
 ---
 
@@ -46,6 +46,6 @@ const delay = `${index * 200}ms`;
 
   <!-- Label -->
   <div class="font-mono text-[16px] text-white">
-    {label}
+    <span class="lang-en">{label}</span><span class="lang-es">{labelEs || label}</span>
   </div>
 </div>

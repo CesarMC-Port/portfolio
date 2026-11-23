@@ -16,20 +16,24 @@ import { Github } from "@lucide/astro";
 
       <div class="flex items-center gap-8 opacity-0 animate-fade-in animation-delay-200">
         <a href="#home" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
-          Home
+          <span class="lang-en">Home</span><span class="lang-es">Inicio</span>
           <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#about" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
-          About
+          <span class="lang-en">About</span><span class="lang-es">Sobre mí</span>
           <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
         </a>
         <a href="#projects" class="hover:text-gray-400 transition-all duration-300 hover:scale-110 relative group">
-          Projects
+          <span class="lang-en">Projects</span><span class="lang-es">Proyectos</span>
           <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
         </a>
       </div>
 
       <div class="flex items-center gap-4 opacity-0 animate-slide-in-right animation-delay-300">
+        <div class="flex items-center gap-0.5 border border-gray-700 p-0.5 font-mono text-xs" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang-btn="en" aria-pressed="true" class="px-1.5 py-0.5 transition-colors hover:text-white">EN</button>
+          <button type="button" data-lang-btn="es" aria-pressed="false" class="px-1.5 py-0.5 transition-colors hover:text-white">ES</button>
+        </div>
         <a href="https://github.com/CesarMC-Port" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-gray-800 rounded transition-all duration-300 hover:scale-110 hover:rotate-12">
           <Github size={20} />
         </a>
@@ -68,4 +72,27 @@ import { Github } from "@lucide/astro";
 	}
     
 	setEventSubmit();
+
+  const applyLang = (lang: string) => {
+    const next = lang === "es" ? "es" : "en";
+    document.documentElement.dataset.lang = next;
+    document.documentElement.lang = next;
+    try { localStorage.setItem("portfolio-lang", next); } catch (e) {}
+    document.querySelectorAll<HTMLButtonElement>("[data-lang-btn]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.dataset.langBtn === next));
+    });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("[data-lang-btn]").forEach((btn) => {
+    btn.addEventListener("click", () => applyLang(btn.dataset.langBtn || "en"));
+  });
+
+  applyLang(document.documentElement.dataset.lang === "es" ? "es" : "en");
 </script>
+
+<style>
+  [data-lang-btn][aria-pressed="true"] {
+    background-color: #fff;
+    color: #0d1117;
+  }
+</style>

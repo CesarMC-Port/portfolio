@@ -68,6 +68,10 @@
                   <img
                     :src="props.project.image"
                     :alt="props.project.title"
+                    width="1440"
+                    height="900"
+                    :loading="props.index === 0 ? 'eager' : 'lazy'"
+                    decoding="async"
                     class="h-full w-full object-cover transition-transform duration-700 scale-[1.1] group-hover/image:scale-[1.2]"
                   />
                 </div>
@@ -91,12 +95,14 @@
               class="h-2 w-2 rounded-full animate-pulse"
               :class="props.project.status === 'COMPLETED' ? 'bg-green-500' : 'bg-blue-500'"
             ></div>
-            <span class="text-white/80 font-mono text-xs uppercase">{{ props.project.status }}</span>
+            <span class="text-white/80 font-mono text-xs uppercase">
+              <span class="lang-en">{{ props.project.status }}</span><span class="lang-es">{{ props.project.statusEs || props.project.status }}</span>
+            </span>
           </div>
         </div>
 
         <p class="text-white/80 mb-6 text-sm leading-relaxed md:text-base">
-          {{ props.project.description }}
+          <span class="lang-en">{{ props.project.description }}</span><span class="lang-es">{{ props.project.descriptionEs || props.project.description }}</span>
         </p>
 
         <!-- TAGS -->

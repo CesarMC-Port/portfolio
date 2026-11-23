@@ -1,5 +1,5 @@
 ---
-const { icon:Icon, title, skills } = Astro.props;
+const { icon:Icon, title, titleEs, skills } = Astro.props;
 ---
 
 <div
@@ -14,7 +14,7 @@ const { icon:Icon, title, skills } = Astro.props;
         <Icon />
       </div>
       <h3 class="mb-6 font-mono text-sm font-bold uppercase tracking-wider">
-        {title}
+        <span class="lang-en">{title}</span><span class="lang-es">{titleEs || title}</span>
       </h3>
       <div class="flex-1">
         <div class="flex flex-wrap gap-2">
